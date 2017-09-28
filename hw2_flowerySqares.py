@@ -50,9 +50,13 @@ def main():
         sz = int(input('Enter the length for squares in pixels: '))
         #
         #Enter if statements here
+        if sz < 15:
+            print('Your square is too small. You will not be able to see it. Please make it bigger. ')
+        elif sz > 400:
+            print('Your square is too big. It will not fit on the screen. Please make it smaller. ')
         #
     except:
-        print('Please ehter an integer!')
+        print('Please enter an integer!')
         main()
     
     #Testing the size variable
@@ -60,6 +64,8 @@ def main():
         sq = int(input('Enter the number of squares to be drawn: '))
         #
         #Enter if statements here
+         if sq < 2:
+            print('You are boring. Please enter more squares. ')
         #
     except:
         print('Please ehter an integer!')
