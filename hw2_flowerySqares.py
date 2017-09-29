@@ -10,16 +10,33 @@ some examples:
 
 import turtle
 import math
-#import random
+import random
 
 #List of variables
 t = turtle
-#r = random.randint(0,255)
-#g = random.randint(0,255)
-#b = random.randint(0,255)      
-sq = '' #number of squares
-sz = '' #size of squares
+r = random.randint(0,255)
+g = random.randint(0,255)
+b = random.randint(0,255)
 
+try:
+    sz = eval(input('Enter the length for squares in pixels: '))
+except:
+    
+
+    while type(sz) != int:
+        if type(sz) == str:
+            print('Please enter an integer')
+            sz = input('Enter the length for squares in pixels: ')
+        elif type(sz) == float:
+            print('How about you enter an integer instead?')
+            sz = input('Enter the length for squares in pixels: ')
+        elif sz == 0:
+            print('You really want to draw a square with 0 px?')
+            sz = input('Enter the length for squares in pixels: ')
+        else:
+            print('OK, now lets get the number of squares')
+        
+sq = int(input('Enter the number of squares to be drawn: '))
 #function to draw a circle
 def circle():
     'Just a circle with a grey shade'
@@ -35,36 +52,15 @@ def circle():
     t.home()
     t.pendown()
 
-#circle()
+circle()
 
 
 def main():
     '''
     The program draws squares proportionaly within a circle. /n
-    The square lenght and number of squares are defined by user
+    The square length and number of squares are defined by user
     '''
     s = turtle.Screen()
-    
-    #Testing the length variable
-    try:
-        sz = int(input('Enter the length for squares in pixels: '))
-        #
-        #Enter if statements here
-        #
-    except:
-        print('Please ehter an integer!')
-        main()
-    
-    #Testing the size variable
-    try:
-        sq = int(input('Enter the number of squares to be drawn: '))
-        #
-        #Enter if statements here
-        #
-    except:
-        print('Please ehter an integer!')
-        main()     
-    
     # draw the circle
     circle()
     
@@ -91,4 +87,4 @@ def main():
     #keep turtle open     
     s.mainloop()
  
-#main()
+main()
