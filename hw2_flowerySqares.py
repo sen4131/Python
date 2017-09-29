@@ -36,7 +36,7 @@ except:
         else:
             print('OK, now lets get the number of squares')
         
-sq = int(input('Enter the number of squares to be drawn: '))
+sq = eval(input('Enter the number of squares to be drawn: '))
 #function to draw a circle
 def circle():
     'Just a circle with a grey shade'
