@@ -10,19 +10,19 @@ some examples:
 
 import turtle
 import math
-import random
+import time
+
 
 #List of variables
 t = turtle
-r = random.randint(0,255)
-g = random.randint(0,255)
-b = random.randint(0,255)
 
+print('\nThis program will draw a circle. ')
+print('It will then proceed to add squares in the circle ')
+        
 try:
     sz = eval(input('Enter the length for squares in pixels: '))
 except:
     
-
     while type(sz) != int:
         if type(sz) == str:
             print('Please enter an integer')
@@ -48,7 +48,7 @@ def circle():
     t.begin_fill()
     t.circle(hyp)
     t.end_fill()
-    t.penup()
+    t.penup() 
     t.home()
     t.pendown()
 
@@ -60,16 +60,17 @@ def main():
     The program draws squares proportionaly within a circle. /n
     The square length and number of squares are defined by user
     '''
-    s = turtle.Screen()
+    
     # draw the circle
-    circle()
     
     # number of squares done in j-loop    
     for j in range(sq):
         
         #color the square looping through these colors
-        c = ['red','blue','teal', 'yellow', 'purple']      
-        turtle.fillcolor(c[j % 5])
+        c = ['red','blue','teal', 'yellow', 'purple', 'pink', 'violet', 
+             'green', 'orange', 'indigo', 'black', 'white', 'brown', 'cyan',
+             'medium sea green', 'DeepPink', 'DeepSkyBlue', 'gold', 'HotPink']      
+        turtle.fillcolor(c[j % len(c)])
         turtle.begin_fill()
         
         #the actual square is drawn at varing speeds in  i-loop
@@ -85,6 +86,7 @@ def main():
         turtle.right(360/sq)
         
     #keep turtle open     
-    s.mainloop()
+    
+    time.sleep(5)
  
 main()
