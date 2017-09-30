@@ -10,33 +10,59 @@ some examples:
 
 import turtle
 import math
-import random
+import time
+
 
 #List of variables
 t = turtle
-r = random.randint(0,255)
-g = random.randint(0,255)
-b = random.randint(0,255)
+sz = '' # length of the sides of the square
+sq = '' # number of squares to be drawn
 
-try:
-    sz = input('Enter the length for squares in pixels: ')
-exept:
-    
 
-while type(sz) != int:
-    if type(sz) == str:
-        print('Please enter an integer')
-        sz = input('Enter the length for squares in pixels: ')
-    elif type(sz) == float:
-        print('How about you enter an interger instead?')
-        sz = input('Enter the length for squares in pixels: ')
-    elif sz == 0:
-        print('You really want to draw a square with 0 px?')
-        sz = input('Enter the length for squares in pixels: ')
-    else:
-        print('OK, now lets get the number of squares')
+def about():
+    print('\nThis program will draw a circle. ')
+    print('It will then proceed to add squares in the circle ')
+    print('You\'ll need to enter the size and number os squares when asked')
+
+def size ():
+    'To ensure user enter a valid number for pixel length between 25 and 200'
+    global sz
+    while type(sz) != int or sz < 25 or sz > 200:
+        try:
+            sz = int(input('\nEnter the length for squares in pixels (between 25 and 200): '))
+            
+            if sz < 25:
+                print('\nThat is too small')
+                size()
+            elif sz > 200:
+                print('\nThat is too big')
+                size()
+            else:
+                print('\nOK! We\'re nearly there!')
         
-sq = int(input('Enter the number of squares to be drawn: '))
+        except:
+            print('\nPlease enter an integer!')
+      
+def squares():
+    'To ensure user enter a valid number of square between 1 and 30'
+    global sq
+    while type(sq) != int or (sq == 0) or (sq > 30):
+        try:
+            sq = int(input('\nEnter the number of squares to be drawn (between 1 and 30): '))
+            
+            if sq == 0:
+                print('\nThat is too small')
+                squares()
+            elif sq > 30:
+                print('\nThat is too big')
+                squares()
+            else:
+                print('\nOK! We\'re good to go!')
+                print('\nTake a look at the turtle canvas...')
+                
+        except:
+            print('\nPlease enter an integer!')
+        
 #function to draw a circle
 def circle():
     'Just a circle with a grey shade'
@@ -48,43 +74,47 @@ def circle():
     t.begin_fill()
     t.circle(hyp)
     t.end_fill()
-    t.penup()
+    t.penup() 
     t.home()
     t.pendown()
 
-#circle()
-
-
+def drawSquare():
+    #the actual square is drawn at varing speeds in  i-loop
+    for i in range (4):
+        turtle.forward(sz)
+        turtle.right(90)
+        t.speed(3 + (i*2))
+        
 def main():
     '''
     The program draws squares proportionaly within a circle. /n
-    The square lenght and number of squares are defined by user
+    The square length and number of squares are defined by user
     '''
-    s = turtle.Screen()
+    about()
+    # correct variables
+    size()
+    squares()
     # draw the circle
     circle()
-    
+
     # number of squares done in j-loop    
     for j in range(sq):
         
         #color the square looping through these colors
-        c = ['red','blue','teal', 'yellow', 'purple']      
-        turtle.fillcolor(c[j % 5])
+        c = ['red','blue','teal', 'yellow', 'purple', 'pink', 'violet', 
+             'green', 'orange', 'indigo', 'black', 'white', 'brown', 'cyan',
+             'medium sea green', 'DeepPink', 'DeepSkyBlue', 'gold', 'HotPink']      
+        
+        turtle.fillcolor(c[j % len(c)])
         turtle.begin_fill()
-        
-        #the actual square is drawn at varing speeds in  i-loop
-        for i in range (4):
-            turtle.forward(sz)
-            turtle.right(90)
-            t.speed(3 + (i*2))
-        
+        #function draws squares
+        drawSquare()
         #stop coloring the square
         turtle.end_fill()
-        
         # draw the next square 360/x angles to the right
         turtle.right(360/sq)
         
     #keep turtle open     
-    s.mainloop()
- 
+    time.sleep(5)
+
 main()
