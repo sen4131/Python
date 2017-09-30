@@ -1,8 +1,10 @@
-# -*- coding: utf-8 -*-
 """
-Created on Wed Sep 27 12:02:22 2017
-Title: Square and circles
-@author: 
+Title: Squares in a circle
+Authors: 
+    Sen Varghese
+    Reyes Ceballos
+Group # 7
+Date:10/1/2017
 CUS 601 Homework2
 """
 
@@ -18,10 +20,10 @@ sq = '' # number of squares to be drawn
 def about():
     print('\nThis program will draw a circle. ')
     print('It will then proceed to add squares in the circle ')
-    print('You\'ll need to enter the size and number os squares when asked')
+    print('You\'ll need to enter the size and number of squares when asked')
 
 def size ():
-    'To ensure user enter a valid number for pixel length between 25 and 200'
+    'To ensure user enters a valid number for pixel length between 25 and 200'
     global sz
     while type(sz) != int or sz < 25 or sz > 200:
         try:
@@ -40,7 +42,7 @@ def size ():
             print('\nPlease enter an integer!')
       
 def squares():
-    'To ensure user enter a valid number of square between 1 and 30'
+    'To ensure user enters a valid number of squares between 1 and 30'
     global sq
     while type(sq) != int or (sq == 0) or (sq > 30):
         try:
@@ -75,7 +77,7 @@ def circle():
     t.pendown()
 
 def drawSquare():
-    #the actual square is drawn at varing speeds in  i-loop
+    #the actual square is drawn at varying speeds in  i-loop
     for i in range (4):
         turtle.forward(sz)
         turtle.right(90)
